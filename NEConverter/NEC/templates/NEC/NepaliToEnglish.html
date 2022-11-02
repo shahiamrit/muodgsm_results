@@ -1,0 +1,13 @@
+{% extends 'NEC/base.html' %} {% block title %} Mid-West University Date
+Conveter App {% endblock title %} {% block content %}
+<h1>MUSOM Date Converter Application</h1>
+
+<h2>BS to AD Date Converter (English Digits)</h2>
+<form action="" method="post">
+  {% csrf_token %}
+  <h3>{{fmr}} YYYY-MM-DD</h3>
+
+  <input type="submit" />
+</form>
+<p>©Developed by Amrit Shahi</p>
+{{dt}} {% endblock content %}
