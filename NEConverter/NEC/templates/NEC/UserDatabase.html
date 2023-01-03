@@ -1,0 +1,77 @@
+{% extends 'NEC/base2.html' %}
+{% load static %}
+{% block content %}
+    <div class="container py-5">
+        <header class="text-black text-center">
+            <h1 class="display-4">Mid-West University School of Management<br>(MUSOM)</h1>
+            <br>
+            <br>
+            <h3 class="bg-success text-white py-2">MU Digital System Credentials Database</h3>
+        </header>
+        <div class="row py-4">
+            <div class="col-lg-4 mx-auto">
+                <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
+                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 EMIS Login Credentials &#9989</p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p>{{form}}</p>
+                        <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
+                        </form>
+                </div>
+                
+            </div>
+
+            <div class="col-lg-8 mx-auto">
+                <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
+                    {% for result_query in objects %}
+                    <div>
+                       
+                        <table class="table">
+                            <thead>
+                                <p>Dear sir/madam, <br>Please find emis login details as follows.</p>
+                              <h5 style="color: yellow; background-color: black;">{{ result_query.instuation }}</h5>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>URL => </td>
+                                <td>{{ result_query.emisurl }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Username => </td>
+                                <td>{{result_query.username}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td colspan="1">Password</td>
+                                <td>{{result_query.password}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <p>With Regards,<br>MU IT Teams <br>* Please contact us through email if there are any problems - amritshahi365@gmail.com</p>
+                       
+                        
+                       
+                    </div>
+                       
+                    {% endfor %}
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+    <p>© Developed by 2023 IT Dept MU</p>
+    <style>
+        #upload {
+            opacity: 0;
+        }
+        .image-area {
+            border: 3px dotted rgba(8, 18, 94, 0.7);
+            padding: 1rem;
+        }
+        
+    </style>
+    {% endblock %}

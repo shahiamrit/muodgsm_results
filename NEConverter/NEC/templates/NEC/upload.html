@@ -1,0 +1,34 @@
+{% extends 'NEC/base2.html' %}
+{% load static %}
+{% block content %}
+
+{% if form_errors %}
+<p>Found errors on line {{row_count}}</p>
+<ul>
+    {% for field, errors in form_errors.items %}
+    {% for error in errors %}
+    <li>{{field}}: {{error}}</li>
+    {% endfor %}
+    {% endfor %}
+    {% elif row_count %}
+    <p>Successfully uploaded {{ row_count }} row(s) !</p>
+    {% endif %}
+</ul>
+
+
+
+
+
+
+
+<form
+            action="/upload/"
+            enctype="multipart/form-data"
+            method="post"
+        >
+            {% csrf_token %}
+            {{ form }}
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+{% endblock content %}

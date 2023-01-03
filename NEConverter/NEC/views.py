@@ -7,7 +7,14 @@ from django.http import JsonResponse
 import PIL
 from PIL import Image
 from .models import Imageo
+from django.views.generic.base import View
+from .forms3 import UploadForm, ProductForm
 
+from csv import DictReader
+from io import TextIOWrapper
+from .models import userLogin
+
+from .form4 import ResultForm
 
 def neview(request):
     # todays's date
@@ -56,12 +63,49 @@ def con(request):
         ad_data = convert_BS_to_AD(y, m, d)
         ad_data = str(ad_data).replace("()", "")
         return render(request, 'NEC/imgCon.html', {'fmr': fm, 'dt': ad_data})
-
-
     context = {'form': form, 'fmr': fm}
     return render(request, 'NEC/imgCon.html', context)
+
+
 
 def conId(request, pk):
     data = Imageo.objects.get(pk=pk)
     print(data)
     return HttpResponse("hi")
+
+
+class UploadView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "NEC/upload.html", {"form": UploadForm()})
+
+    def post(self, request, *args, **kwargs):
+        products_file = request.FILES["products_file"]
+        rows = TextIOWrapper(products_file, encoding="utf-8", newline="")
+        row_count = 0
+        form_errors = []
+
+        for row in DictReader(rows):
+            row_count += 1
+            form = ProductForm(row)
+            if not form.is_valid():
+                form_errors = form_errors
+                break
+            form.save()
+        return render(
+            request,
+            "NEC/upload.html",
+            {
+                "form": UploadForm(),
+                "form_errors": form_errors,
+                "row_count": row_count,
+            }
+        )
+
+
+def userDb(request):
+    form=ResultForm(request.POST or None)
+    context = {"form": form}
+    if form.is_valid():
+        objects = userLogin.objects.filter(phone=form.cleaned_data['phone_no'])
+        context['objects'] = objects
+    return render(request, 'NEC/UserDatabase.html', context)

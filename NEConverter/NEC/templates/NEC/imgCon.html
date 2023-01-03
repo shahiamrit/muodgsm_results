@@ -24,6 +24,7 @@
                 <div class="input-group mb-3 px-4 py-2">
                     <img src="{% static '../../../media/cropped_images/resize.jpg' %}" alt="">
                 </div>
+
             </div>
 
             <div class="col-lg-2 mx-auto">
@@ -35,7 +36,7 @@
                             {% csrf_token %}
                             <p>{{fmr}} <span style="font-size: 12px; font-style: italic; margin-bottom:0;">YYYY-MM-DD</span></p>
 
-                            <input class="bg-success text-white" style="margin-top: 0px;" type="submit"/>
+                            <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
                             </form>
                     <p style="margin-top: 10px; font-size: 18px; font-weight: bold;">AD : {{dt}}</p>
 

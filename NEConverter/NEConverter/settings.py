@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@#%d))tt+v-^r#lxk3=m@f36c=ljf_7z(4@(1$*y6e(d7z1_wm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["dc.musom.edu.np", "www.dc.musom.edu.np"]
+ALLOWED_HOSTS = ["dc.musom.edu.np", "www.dc.musom.edu.np", "localhost"]
 
 
 # Application definition
