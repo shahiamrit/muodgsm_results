@@ -43,7 +43,7 @@ def con(request):
             img = Image.open(data)
             img = img.resize((width, height), PIL.Image.ANTIALIAS)
             img_Rgb = img.convert('RGB')
-            img_Rgb.save('/home/shahiamrit365/Desktop/MUSOM Project/ENConverter/NEConverter/media/cropped_images/resize.jpg')
+            img_Rgb.save('/var/www/musom-utl-app/NEConverter/media/cropped_images/resize.jpg')
         return JsonResponse({'message': 'works'})
 
     

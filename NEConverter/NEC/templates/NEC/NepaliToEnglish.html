@@ -8,7 +8,11 @@ Conveter App {% endblock title %}
   {% csrf_token %}
   <h3>{{fmr}} YYYY-MM-DD</h3>
 
-  <input type="submit" />
+  <input onclick="locationreload()" type="button"/>
+<button onclick = "locationreload()">
+            Reload page
+        </button>
+
 </form>
 <p>©Developed by Amrit Shahi</p>
 <h3>AD Date : {{dt}}</h3>
