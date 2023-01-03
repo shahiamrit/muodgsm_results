@@ -45,7 +45,20 @@ def con(request):
             img_Rgb = img.convert('RGB')
             img_Rgb.save('/home/shahiamrit365/Desktop/MUSOM Project/ENConverter/NEConverter/media/cropped_images/resize.jpg')
         return JsonResponse({'message': 'works'})
-    context = {'form': form}
+
+    
+    fm = UserInputForms()
+    if request.method == 'POST':
+        up = request.POST.get('date')
+        y = up[0:4]
+        m = up[5:7].lstrip('0')
+        d = up[8:10]
+        ad_data = convert_BS_to_AD(y, m, d)
+        ad_data = str(ad_data).replace("()", "")
+        return render(request, 'NEC/imgCon.html', {'fmr': fm, 'dt': ad_data})
+
+
+    context = {'form': form, 'fmr': fm}
     return render(request, 'NEC/imgCon.html', context)
 
 def conId(request, pk):

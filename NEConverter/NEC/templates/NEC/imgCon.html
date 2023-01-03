@@ -6,7 +6,7 @@
             <h1 class="display-4">Mid-West University School of Management<br>(MUSOM)</h1>
             <br>
             <br>
-            <h3 style="text-decoration-line: underline;">Image Converter Application</h3>
+            <h3 class="bg-success text-white py-2">Image & Date Converter Application</h3>
         </header>
         <div class="row py-4">
             <div class="col-lg-6 mx-auto">
@@ -25,6 +25,26 @@
                     <img src="{% static '../../../media/cropped_images/resize.jpg' %}" alt="">
                 </div>
             </div>
+
+            <div class="col-lg-2 mx-auto">
+                <div class="input-group mb-3">
+                    
+
+                    <p class="bg-success text-white py-1"> BS to AD </p>
+                            <form action="" method="post">
+                            {% csrf_token %}
+                            <p>{{fmr}} <span style="font-size: 12px; font-style: italic; margin-bottom:0;">YYYY-MM-DD</span></p>
+
+                            <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
+                            </form>
+                    <p style="margin-top: 10px; font-size: 18px; font-weight: bold;">AD : {{dt}}</p>
+
+
+
+
+                </div>
+            </div>
+
         </div>
 
 
