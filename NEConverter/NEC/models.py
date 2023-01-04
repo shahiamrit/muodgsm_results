@@ -19,6 +19,7 @@ class userLogin(models.Model):
     emisurl = models.CharField(max_length=300, blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
     password = models.CharField(max_length=400, blank=True, null=True)
+    scode = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.name

@@ -5,7 +5,7 @@ from .models import userLogin
 class ProductForm(ModelForm):
     class Meta:
         model = userLogin
-        fields = ['id', 'name', 'instuation', 'position', 'phone', 'email', 'emisurl', 'username', 'password']
+        fields = ['id', 'name', 'instuation', 'position', 'phone', 'email', 'emisurl', 'username', 'password', 'scode']
 
 
 class UploadForm(Form):

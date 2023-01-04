@@ -106,6 +106,6 @@ def userDb(request):
     form=ResultForm(request.POST or None)
     context = {"form": form}
     if form.is_valid():
-        objects = userLogin.objects.filter(phone=form.cleaned_data['phone_no'])
+        objects = userLogin.objects.filter(scode=form.cleaned_data['scode_no'])
         context['objects'] = objects
     return render(request, 'NEC/UserDatabase.html', context)
