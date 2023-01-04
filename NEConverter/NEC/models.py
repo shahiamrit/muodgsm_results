@@ -23,3 +23,13 @@ class userLogin(models.Model):
 
     def __str__(self):
         return self.name
+
+class sname(models.Model):
+    dept = models.CharField(max_length=300, blank=True, null=True)
+    person = models.CharField(max_length=300, blank=True, null=True)
+    phonenumber = models.CharField(max_length=300, blank=True, null=True)
+    def __str__(self):
+        return self.dept
+
+    
+        

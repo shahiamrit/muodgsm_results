@@ -16,6 +16,12 @@ from .models import userLogin
 
 from .form4 import ResultForm
 
+from .forms5 import sForm
+
+from .models import sname
+
+from django.contrib import messages
+
 def neview(request):
     # todays's date
     fm = UserInputForms()
@@ -102,10 +108,27 @@ class UploadView(View):
         )
 
 
-def userDb(request):
+def userDb(request):     
+    if request.method == 'POST':
+        dept = request.POST.get('dept', '')
+        person = request.POST.get('person', '')
+        phonenumber = request.POST.get('phonenumber', '')
+        if dept and person and phonenumber:
+            data = sname(dept=dept, person=person, phonenumber=phonenumber)
+            data.save()
+            messages.success(request, '🌍 Thank you for filling out your information, with in 24 hours data entry assistant will be added in whatsapp group.')
     form=ResultForm(request.POST or None)
     context = {"form": form}
     if form.is_valid():
         objects = userLogin.objects.filter(scode=form.cleaned_data['scode_no'])
         context['objects'] = objects
     return render(request, 'NEC/UserDatabase.html', context)
+
+    
+
+
+def sFormView(request):
+    form = sForm(request.POST)
+    if form.is_valid:
+        form.save()
+    return render(request, 'NEC/UserDatabase.html', {'fm': form})
