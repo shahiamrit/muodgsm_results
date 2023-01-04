@@ -6,12 +6,21 @@
             <h1 class="display-4">Mid-West University School of Management<br>(MUSOM)</h1>
             <br>
             <br>
-            <h3 class="bg-success text-white py-2">MU Digital System Credentials Database</h3>
+            <h3 class="bg-success text-white py-2">🖥 MU Digital System Credentials Database</h3>
         </header>
         <div class="row py-4">
             <div class="col-lg-4 mx-auto">
                 <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
-                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 EMIS Login Credentials &#9989</p>
+                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 EMIS, ERPS & Mobile Apps Credentials &#9989</p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p>{{form}}</p>
+                        <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
+                        </form>
+                </div>
+
+                <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
+                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 CMS Login Credentials &#9989</p>
                     <form action="" method="post">
                         {% csrf_token %}
                         <p>{{form}}</p>
