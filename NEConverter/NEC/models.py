@@ -6,9 +6,9 @@ class Imageo(models.Model):
     file = models.ImageField(upload_to='cropped_images')
     uploaded = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return str(self.pk)
-
+    class Meta:
+        verbose_name = 'photo'
+        verbose_name_plural = 'photos'
 
 class userLogin(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from pyBSDate import convert_BS_to_AD
 from .forms import UserInputForms
@@ -9,6 +9,7 @@ from PIL import Image
 from .models import Imageo
 from django.views.generic.base import View
 from .forms3 import UploadForm, ProductForm
+import tempfile
 
 from csv import DictReader
 from io import TextIOWrapper
@@ -47,19 +48,16 @@ def neview(request):
 #     return render(request, 'NEC/imgCon.html', context)
 
 def con(request):
-    width = 200
-    height = 200
-    form = ImageForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form1 = request.FILES
-        for data in form1.values():
-            img = Image.open(data)
-            img = img.resize((width, height), PIL.Image.ANTIALIAS)
-            img_Rgb = img.convert('RGB')
-            img_Rgb.save('/var/www/musom-utl-app/NEConverter/media/cropped_images/resize.jpg')
-        return JsonResponse({'message': 'works'})
 
-    
+    # Working code #
+    img = Imageo.objects.latest('id')
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = ImageForm()
     fm = UserInputForms()
     if request.method == 'POST':
         up = request.POST.get('date')
@@ -69,8 +67,40 @@ def con(request):
         ad_data = convert_BS_to_AD(y, m, d)
         ad_data = str(ad_data).replace("()", "")
         return render(request, 'NEC/imgCon.html', {'fmr': fm, 'dt': ad_data})
-    context = {'form': form, 'fmr': fm}
-    return render(request, 'NEC/imgCon.html', context)
+
+    return render(request, 'NEC/imgCon.html', {'form': form, 'img': img, 'fmr': fm})
+
+    # working Code#
+
+    # form = ImageForm(request.POST, request.FILES)
+    # if form.is_valid():
+    #     #  Open the image file
+    #     image = Image.open(form.cleaned_data['file'])
+    #     # Resize the image to a size of 200x200
+    #     image = image.resize((200, 200), PIL.Image.ANTIALIAS)
+    #     # Convert the image to the RGB format
+    #     image = image.convert('RGB')
+    #     # Create a temporary file
+    #     with tempfile.NamedTemporaryFile(suffix='.jpg') as temp:
+    #         # Save the image to the temporary file
+    #         image.save(temp)
+    #         # Seek to the beginning of the file
+    #         temp.seek(0)
+    #         # Create a new Imageo instance
+    #         imageo = Imageo()
+    #         # Assign the temporary file to the file field of the instance
+    #         imageo.file.save('resize.jpg', temp)
+    #         # Save the instance to the database
+    #         imageo.save()
+    #     return HttpResponse('done')
+    # else:
+    #     form = ImageForm()
+
+    # img = Imageo.objects.latest('id')
+    # return render(request, 'NEC/imgCon.html', {'form': form, 'img': img})
+
+
+
 
 
 

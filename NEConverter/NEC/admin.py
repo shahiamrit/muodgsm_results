@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import userLogin, sname
+from .models import userLogin, sname, Imageo
 # Register your models here.
 class snameAdmin(admin.ModelAdmin):
     list_display = ('dept', 'person', 'phonenumber')
@@ -7,3 +7,4 @@ class snameAdmin(admin.ModelAdmin):
 
 admin.site.register(userLogin)
 admin.site.register(sname, snameAdmin)
+admin.site.register(Imageo)

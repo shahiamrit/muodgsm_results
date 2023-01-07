@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@#%d))tt+v-^r#lxk3=m@f36c=ljf_7z(4@(1$*y6e(d7z1_wm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["dc.musom.edu.np", "www.dc.musom.edu.np", "localhost"]
+ALLOWED_HOSTS = ["dc.musom.edu.np", "www.dc.musom.edu.np", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -75,23 +75,23 @@ WSGI_APPLICATION = 'NEConverter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db-mu',
-        'USER': 'db-mu',
-        'PASSWORD': 'drZ6oucApiYk2VUl',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'db-mu',
+#         'USER': 'db-mu',
+#         'PASSWORD': 'drZ6oucApiYk2VUl',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
