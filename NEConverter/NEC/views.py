@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from pyBSDate import convert_BS_to_AD
 from .forms import UserInputForms
 from .forms2 import ImageForm
 from django.http import JsonResponse
 import PIL
 from PIL import Image
-from .models import Imageo
+from .models import Imageo, FileUpload
 from django.views.generic.base import View
 from .forms3 import UploadForm, ProductForm
 import tempfile
@@ -20,7 +20,7 @@ from .form4 import ResultForm
 from .forms5 import sForm
 
 from .models import sname
-
+from .tmpform import UploadFileForm
 from django.contrib import messages
 
 def neview(request):
@@ -162,3 +162,24 @@ def sFormView(request):
     if form.is_valid:
         form.save()
     return render(request, 'NEC/UserDatabase.html', {'fm': form})
+
+
+def tempFileView(request):
+    if request.method == 'POST' and request.FILES['formFile']:
+        data = request.FILES['formFile']
+        data = FileUpload(doc=data)
+        data.save()
+        token = data.token
+        return render(request, 'NEC/tempfile.html', {'token': token})
+    return render(request, 'NEC/tempfile.html')
+
+
+
+def tempFileDownloadView(request, token):
+    try:
+        obj = FileUpload.objects.get(token=token)
+        data = obj
+        print(data.doc)
+        return render(request, 'NEC/tempfile.html', {'obj': data})
+    except FileUpload.DoesNotExist:
+        raise Http404("File does not exist")

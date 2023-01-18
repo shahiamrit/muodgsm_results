@@ -1,5 +1,5 @@
 from django.db import models
-
+import shortuuid
 # Create your models here.
 
 class Imageo(models.Model):
@@ -9,6 +9,10 @@ class Imageo(models.Model):
     class Meta:
         verbose_name = 'photo'
         verbose_name_plural = 'photos'
+
+class FileUpload(models.Model):
+    doc = models.FileField(upload_to ='uploads')
+    token = models.CharField(max_length=22, default=shortuuid.uuid)
 
 class userLogin(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
@@ -32,4 +36,3 @@ class sname(models.Model):
         return self.dept
 
     
-        

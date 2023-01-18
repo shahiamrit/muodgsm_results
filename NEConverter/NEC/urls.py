@@ -7,4 +7,6 @@ urlpatterns = [
     path('crop/<str:pk>/', views.conId),
     path('upload/', views.UploadView.as_view()),
     path('db', views.userDb),
+    path ('tmpfile', views.tempFileView),
+    path('tmpfile/<str:token>', views.tempFileDownloadView, name='file_download')
 ]
