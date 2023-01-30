@@ -18,6 +18,7 @@ class userLogin(models.Model):
     remarks = models.CharField(max_length=200, blank=True, null=True)
     dob = models.CharField(max_length=100, blank=True, null=True)
     symb = models.CharField(max_length=100, blank=True, null=True)
+    result = models.CharField(max_length=100, blank=True, null=True)
     
     subject1 = models.CharField(max_length=200, blank=True, null=True)
     credithour1 = models.CharField(max_length=100, blank=True, null=True)
@@ -39,6 +40,7 @@ class userLogin(models.Model):
     gradevalu3 = models.CharField(max_length=300, blank=True, null=True)
     semlettergrade3 = models.CharField(max_length=400, blank=True, null=True)
     remarks3 = models.CharField(max_length=200, blank=True, null=True)
+
 
     def __str__(self):
         return self.studentname
