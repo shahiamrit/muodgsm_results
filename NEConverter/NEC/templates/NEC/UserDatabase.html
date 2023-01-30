@@ -3,15 +3,15 @@
 {% block content %}
     <div class="container py-5">
         <header class="text-black text-center">
-            <h1 class="display-4">Mid-West University School of Management<br>(MUSOM)</h1>
+            <h1 class="display-6">Mid-West University <br>Office of the Dean<br> Graduate School of Management</h1>
             <br>
             <br>
-            <h3 class="bg-success text-white py-2">🖥 MU Digital System Credentials Database</h3>
+            <h3 class="bg-primary text-white py-2">🖥 Result Display Portal</h3>
         </header>
         <div class="row py-4">
             <div class="col-lg-4 mx-auto">
                 <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
-                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 EMIS Credentials &#9989</p>
+                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 User &#9989</p>
                     <form action="" method="post">
                         {% csrf_token %}
                         <p>{{form}}</p>
@@ -19,15 +19,6 @@
                         </form>
                 </div>
 
-                <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
-                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 CMS Credentials &#9989</p>
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        <p>{{form}}</p>
-                        <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
-                        </form>
-                </div>
-                
             </div>
 
             <div class="col-lg-8 mx-auto">
@@ -36,41 +27,75 @@
                     <div>
                        
                         <table class="table">
-                            <thead>
-                                <p>Dear sir/madam, <br>Please find EMIS login details as follows.</p>
+                                <p> Student Name: {{result_query.studentname}} <br>Batch: {{result_query.batch}}</p>
                               <h5 style="color: yellow; background-color: black;">{{ result_query.instuation }}</h5>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>URL => </td>
-                                <td>{{ result_query.emisurl }}</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Username => </td>
-                                <td>{{result_query.username}}</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td colspan="1">Password</td>
-                                <td>{{result_query.password}}</td>
-                              </tr>
-                            </tbody>
-                        </table>
-                        <p>With Regards,<br>MU IT Teams <br></p>
-                       
-                        <p style="background-color: yellow; text-align: justify;">** Also we need a whatsapp group which will connect us to MU IT and Developer teams to resolve the server and data entry issues. Please fillup forms by submitting following details so that our teams will create whatsapp group for your instuation.</p>
-                        
-                        <!-- POST Request of Forms -->
+                           
+                            <!-- table -->
+                            <thead>
+                                <tr>
+                                  <th scope="col">S.N.</th>
+                                  <th scope="col">Subject</th>
+                                  <th scope="col">Credit Hour</th>
+                                  <th scope="col">Grade</th>
+                                  <th scope="col">Grade Value</th>
+                                  <th scope="col">Remarks</th>
 
-                        <form action="" method="POST">
-                            {% csrf_token %}
-                            <input type="text" name="dept" id="dept" placeholder="1. Institution Name" class="form-control w-50 form-row" required>
-                            <input type="text" name="person" id="person" placeholder="2. Data Entry Asst. Name" class="form-control w-50 form-row mt-1" required>
-                            <input type="text" name="phonenumber" id="phonenumber" placeholder="3. Phone#(Whatsapp Activated): " class="form-control w-50 form-row mt-1" required>
-                            <input class="bg-success text-white mt-1" style="margin-top: 0px;" type="submit" />
-                            </form>
-                            <p><span class="form-text pt-2">** Please contact us through email if there are any problems - ca@shahiamrit365.com.np</span></p>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">{{result_query.id}}</th>
+                                  <td>{{result_query.subject}}</td>
+                                  <td>{{result_query.credithour}}</td>
+                                  <td>{{result_query.grade}}</td>
+                                  <td>{{result_query.gradevalu}}</td>
+                                  <td>{{result_query.remarks}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>{{result_query.subject1}}</td>
+                                    <td>{{result_query.credithour1}}</td>
+                                    <td>{{result_query.grade1}}</td>
+                                    <td>{{result_query.gradevalu1}}</td>
+                                    <td>{{result_query.remarks1}}</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">3</th>
+                                    <td>{{result_query.subject2}}</td>
+                                    <td>{{result_query.credithour2}}</td>
+                                    <td>{{result_query.grade2}}</td>
+                                    <td>{{result_query.gradevalu2}}</td>
+                                    <td>{{result_query.remarks2}}</td>
+                                  </tr>
+                                
+                                  <tr>
+                                    <th scope="row">4</th>
+                                    <td>{{result_query.subject3}}</td>
+                                    <td>{{result_query.credithour3}}</td>
+                                    <td>{{result_query.grade3}}</td>
+                                    <td>{{result_query.gradevalu3}}</td>
+                                    <td>{{result_query.remarks3}}</td>
+                                  </tr>
+                              </tbody>
+
+                              <thead>
+                                <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col">CGPA: {{result_query.lcgpa}}</th>
+
+                                  
+                                </tr>
+                              </thead>
+
+
+                        </table>
+                        <!-- POST Request of Forms -->
+                            <p><span class="form-text pt-2">** If any queries, please contact Dean Office.</span></p>
 
                             {% endfor %}
                              {% if messages %}

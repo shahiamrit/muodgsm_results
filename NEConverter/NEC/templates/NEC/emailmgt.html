@@ -1,0 +1,93 @@
+{% extends 'NEC/base2.html' %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+    <header class="text-black text-center">
+        <h1 class="display-4">Mid-West University</h1>
+        <h3 class="bg-success text-white py-2">🖥 MU Digital Email Database</h3>
+    </header>
+    <div class="row py-4">
+        <div class="col-lg-4 mx-auto">
+            <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
+                <p class="bg-success text-white" style="font-style: bold;"> &#9989 EMIS Credentials &#9989</p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>{{form}}</p>
+                    <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
+                    </form>
+            </div>
+            
+        </div>
+
+        <div class="col-lg-8 mx-auto">
+            <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
+                {% for result_query in objects %}
+                <div>
+                   
+                    <table class="table">
+                        <thead>
+                            <p>Dear sir/madam, <br>Please find EMIS login details as follows.</p>
+                          <h5 style="color: yellow; background-color: black;">{{ result_query.instuation }}</h5>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>URL => </td>
+                            <td>{{ result_query.emisurl }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Username => </td>
+                            <td>{{result_query.username}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td colspan="1">Password</td>
+                            <td>{{result_query.password}}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                    <p>With Regards,<br>MU IT Teams <br></p>
+                   
+                    <p style="background-color: yellow; text-align: justify;">** Also we need a whatsapp group which will connect us to MU IT and Developer teams to resolve the server and data entry issues. Please fillup forms by submitting following details so that our teams will create whatsapp group for your instuation.</p>
+                    
+                    <!-- POST Request of Forms -->
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="dept" id="dept" placeholder="1. Institution Name" class="form-control w-50 form-row" required>
+                        <input type="text" name="person" id="person" placeholder="2. Data Entry Asst. Name" class="form-control w-50 form-row mt-1" required>
+                        <input type="text" name="phonenumber" id="phonenumber" placeholder="3. Phone#(Whatsapp Activated): " class="form-control w-50 form-row mt-1" required>
+                        <input class="bg-success text-white mt-1" style="margin-top: 0px;" type="submit" />
+                        </form>
+                        <p><span class="form-text pt-2">** Please contact us through email if there are any problems - ca@shahiamrit365.com.np</span></p>
+
+                        {% endfor %}
+                         {% if messages %}
+                            <ul class="alert alert-success">
+                                {% for message in messages %}
+                                <div  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </div>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                   
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+</div>
+<p>© Developed by 2023 IT Dept MU</p>
+<style>
+    #upload {
+        opacity: 0;
+    }
+    .image-area {
+        border: 3px dotted rgba(8, 18, 94, 0.7);
+        padding: 1rem;
+    }
+    
+</style>
+{% endblock %}
