@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container py-5">
         <header class="text-black text-center">
-            <h1 class="display-6">Mid-West University <br>Office of the Dean<br> Graduate School of Management</h1>
+            <img src="https://result.muodgsm.edu.np/media/uploads/navbar.png" class='img-fluid' alt="">
             <br>
             <br>
             <h3 class="bg-primary text-white py-2">🖥 Result Display Portal for MPhil</h3>
@@ -11,11 +11,11 @@
         <div class="row py-4">
             <div class="col-lg-4 mx-auto">
                 <div class="input-group mb-3 px-4 py-2 bg-white shadow-sm">
-                    <p class="bg-success text-white" style="font-style: bold;"> &#9989 Details &#9989</p>
+                    <p class="bg-primary text-white p-2" style="font-style: bold;">  ** INSERT YOUR DATA ** </p>
                     <form action="" method="post">
                         {% csrf_token %}
                         <p>{{form}}</p>
-                        <input class="bg-success text-white" style="margin-top: 0px;" type="submit" />
+                        <input class="bg-primary text-white" style="margin-top: 0px;" type="submit" />
                         </form>
                 </div>
 
@@ -109,14 +109,14 @@
                        
                     </div>
                 </div>
-                
+                <p>© Developed by 2023 IT Dept MU</p>
             </div>
 
         </div>
 
-
+        
     </div>
-    <p>© Developed by 2023 IT Dept MU</p>
+   
     <style>
         #upload {
             opacity: 0;
@@ -125,6 +125,5 @@
             border: 3px dotted rgba(8, 18, 94, 0.7);
             padding: 1rem;
         }
-        
     </style>
     {% endblock %}
