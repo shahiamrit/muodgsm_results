@@ -27,7 +27,7 @@
                     <div>
                        
                         <table class="table">
-                                <p> Student Name: {{result_query.studentname}} <br>Batch: {{result_query.batch}}</p>
+                                <p> Student Name: {{result_query.studentname}} <br>Batch: {{result_query.batch}} <br>Reg No. {{result_query.reg}}</p>
                               <h5 style="color: yellow; background-color: black;">{{ result_query.instuation }}</h5>
                            
                             <!-- table -->
@@ -86,11 +86,24 @@
                                   <th scope="col"></th>
                                   <th scope="col"></th>
     
-                                  <th scope="col">CGPA: {{result_query.lcgpa}}</th>
-                                  <th scope="col">Result: {{result_query.result}}</th>
-
+                                  <th scope="col" style="font-size: 12px;">CGPA:{{result_query.lcgpa}}</th>
+                                  <th scope="col" style="font-size: 12px;">Result: {{result_query.result}}</th>
+             
                                   
                                 </tr>
+                                <br>
+                                <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+    
+                                  <th scope="col" style="font-size: 12px;">Letter Grade</th>
+                                  
+                                  <th scope="col" style="font-size: 12px;">{{result_query.semlettergrade}}</th>
+                                  
+                                </tr>
+                                
                               </thead>
 
 
