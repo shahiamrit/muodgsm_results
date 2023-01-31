@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'NEConverter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'muodgsm',
+        'NAME': 'muodgsm-result',
         'USER': 'muodgsm',
         'PASSWORD': 'rpiCgl5IXTxw3tAQ',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
